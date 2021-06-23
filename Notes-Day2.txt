@@ -1,0 +1,71 @@
+ASynchronous function --->Callback 
+- function passed as param to another function 
+- Error first callbacks 
+
+- Http requests
+- Db connectivity 
+
+1. Inbuilt modules
+2. NPM modules
+- NPM cmnd tool- comes with Node.js(windows) 
+- package.json file ---->lists all dependencies 
+
+- npm init --->creates a new package.json file
+- npm i   --->installs all packages 
+
+3. Custom modules 
+
+- Server Side Script
+- Build an App Server(Node.js) to handle HTTP requests from the end users (browser) 
+- HTTP methods : GET, POST, PUT, DELETE 
+- take appropriate actions 
+
+
+
+
+
+HTTP Server -- http module
+
+Express framework --- MVC 
+- routing framework 
+- third party module (NPM)
+- npm install express 
+
+
+- POSTMAN client 
+
+
+nodemon-- Node monitoring tool
+
+npm install nodemon -g --->install as a command line tool
+			-->global installation 
+
+npm install mathjs  -->local installations 
+
+
+1. Error Handling in ASynchronous functions
+Eg: File Read -- File not found
+- Try-catch ?
+
+2. Error Handling in Express Server 
+ - 404 Error code -- Invalid URL 
+ - 500 Error -- Internal Server Error
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
