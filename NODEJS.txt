@@ -1,0 +1,163 @@
+var fs = require('fs');
+console.log('File read started');
+fs.readFile('Mydata.txt','utf-8',(err,data)=>
+
+1.Inbuilt Modules - os , fs
+2.NPM Modules
+3.Custom Modules --calculator module (sum,multiply,substract,division)
+Asynchronous function ---->callback 
+------function called as an argument
+error first callbacks
+npm install mathjs
+//////////////////////////////
+var mathjs =require('mathjs');
+console.log(mathjs.sqrt(64));
+console.log(mathjs.evaluate('12 / (2.3 + 0.7)'));
+console.log(mathjs.chain(3)
+.add(4)
+.multiply(2)
+.done());
+console.log(mathjs.log(10000,10))
+///////////////////////
+
+    
+var http = require('http');
+var server = http.createServer((request,response)=>{​​​​​
+//handler for all the requests
+response.write('Hello HTTP Server');
+response.end();
+}​​​​​)
+server.listen(3000,()=>{​​​​​
+console.log('Server listening on 3000');
+}​​​​​)
+
+///////////////
+HTTP SERVER --http module
+express framework  ---MVC
+var express = require('express');
+var app = new express();
+app.listen(3000,()=>{
+console.log('Server listening on 3000');
+})
+
+///////////
+[12:26 PM] Archana Ghatigar
+    
+var express = require('express'); //internally uses 'http' 
+var app =new express();
+//HTTP Requests are ASynchronous
+app.get('/',(request,response)=>{​​​​​
+response.send('Welcome to my Express Application');
+}​​​​​)
+app.get('/products',(request,response)=>{​​​​​
+response.send('Products Data');
+}​​​​​)
+app.get('/customers',(request,response)=>{​​​​​
+response.send('Customers Data');
+}​​​​​)
+app.post('/customers',(request,response)=>{​​​​​
+response.send('New Customer Data Added');
+}​​​​​)
+app.listen(3000,()=>{​​​​​
+console.log('Server listening on 3000');
+}​​​​​)
+
+///////////////////////////////
+npm install express 
+command for installing express
+nodeman -- Node monitoring tool
+npm install nodeman -g  ------> install as a command line tool
+                        ------> global installation
+//views
+//read on
+1. eror handling on asynchronous functions
+eg: File read --file not found
+--try catch
+2.error handling in express server
+-404 error  ----url not found   or page not found
+-500 error Internal server error ; syntax mistake
+//////////////////////////////////////////
+
+    
+app.use(function(request,response,next){​​​​​
+    response.status(404).send("Invalid Route/URL");
+}​​​​​);
+/////////////
+[11:36 AM] Archana Ghatigar
+    
+function getCustomerData(request,response,next){​​​​​
+var name = request.query.name;
+//to search the database
+var customer = {​​​​​name:'Tina',age:34,location:'Pune'}​​​​​;
+response.customer = customer;
+next(); //invoke the next handler in line
+}​​​​​
+app.get('/customers', getCustomerData,(request,response,next)=>{​​​​​
+//Database call and fetch data for the given name:Tina
+//how to fetch the customer data?
+response.send('Customers Data for '+request.query.name +":"+JSON.stringify(response.customer));
+}​​​​​)
+////////////
+
+    
+var express = require('express'); 
+var app =new express();
+app.get('/',(request,response)=>{​​​​​
+response.send('Welcome to my Express Application');
+}​​​​​)
+app.listen(3000,()=>{​​​​​
+console.log('Server listening on 3000');
+}​​​​​)
+//////////////////
+npm install ejs 
+var products = [{'name':'Laptop',price:35000},{'name':'Tablet',price:55000},{'name':'Mobile',price:45000}]
+
+[12:19 PM] Archana Ghatigar
+    
+<h2>Welcome to my EJS Application <%=name %></h2>
+<ul>
+<% productsArray.forEach(function(product){​​​​​ %>
+<li><%= product.name %></li>
+<% }​​​​​) %>
+</ul>
+/////////////////////////
+[12:26 PM] Archana Ghatigar
+    
+<!DOCTYPE html>
+<html>
+<head>
+<metacharset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<h2>Add Product</h2>
+<formaction="/addproduct"method="POST">
+<label>Enter Name:</label><inputtype="text"name="name" /><br>
+<label>Enter Price:</label><inputtype="text"name="price" /><br>
+<inputtype="submit"value="Add" />
+</form>
+</body>
+</html>
+/////////////////////////
+
+    
+app.post('/addproduct',(request,response)=>{​​​​​
+// read the new product details : name and price
+// need to parse this form-urlencoded data into JS Object
+var name = request.body.name;
+var price = request.body.price;
+var newProduct =new Object();
+newProduct.name = name;
+newProduct.price = price;
+products.push(newProduct); // add it to the array 
+//Save it into the database
+//display an acknowledgement
+//response.send('New Product Added');
+response.redirect('/');
+}​​​​​)
+
+
+
+
+
+
